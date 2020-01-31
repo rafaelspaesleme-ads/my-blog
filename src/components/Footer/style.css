@@ -1,0 +1,16 @@
+div {
+    background: transparent;
+    width: 100%;
+}
+
+div#footer-left {
+    text-align: left;
+}
+
+div#footer-center {
+    text-align: center;
+}
+
+div#footer-right {
+    text-align: right;
+}

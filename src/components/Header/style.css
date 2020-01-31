@@ -1,0 +1,16 @@
+div {
+    background: transparent;
+    width: 100%;
+}
+
+div#main-left {
+    text-align: left;
+}
+
+div#main-center {
+    text-align: center;
+}
+
+div#main-right {
+    text-align: right;
+}

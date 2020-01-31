@@ -1,0 +1,21 @@
+.item-box-link {
+    background: #5e5e5e;
+    padding: 10px;
+    margin: 5px;
+    border: 1px solid #000000;
+}
+
+span {
+    background-color: transparent;
+    color: #ffffff;
+}
+
+.item-icon {
+    background-color: transparent;
+    color: #ffffff;
+}
+
+span:hover {
+    color: slategray;
+    
+}
