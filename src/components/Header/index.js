@@ -8,7 +8,7 @@ const userAuth = localStorage.getItem('auth-token');
 
 function verifyUserAuth() {
     if (userAuth !== null){
-        return 'Bem vindo!'
+        return 'Welcome my Blog'
     } else {
         return (
             <HeaderImage 
@@ -26,7 +26,11 @@ const Header = () => (
                 {verifyUserAuth()}
             </div>
             <div id="main-right">
-                <DropdownSimple />
+                <DropdownSimple 
+                    loginDrop={'/login'} 
+                    userDrop={'/novo-usuario'} 
+                    sharedDrop={'/shared-blog'}
+                />
             </div>
         </header>
     )
