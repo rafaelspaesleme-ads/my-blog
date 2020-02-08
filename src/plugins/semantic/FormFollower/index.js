@@ -38,11 +38,17 @@ class FormFollower extends Component {
                         fluid
                         label='Profissão'
                         options={options}
-                        placeholder='Escolha sua profissão'
+                        placeholder='Selecione'
                     />
                     </Form.Group>
-                    <Form.TextArea label='Sobre mim' placeholder='Fale um pouco sobre você' />
+                    <Form.Group>
+                    <Form.Input type="email" fluid label='Email' placeholder='Digite seu email' />
+                    <Form.Input type="tel" fluid label='WhatsApp' placeholder='Digite seu Whatsapp' />
+                    <Form.Input fluid label='Instagram' placeholder='Digite seu instagram' />
+                    <Form.Input fluid label='Github' placeholder='Digite seu github' />
                     <Form.Input type="file" fluid label='Avatar' placeholder='Escolha uma imagem para ser seu avatar' />
+                    </Form.Group>
+                    <Form.TextArea label='Sobre mim' placeholder='Fale um pouco sobre você' />
                     <Form.Button>Submit</Form.Button>
                 </Form>
             </div>

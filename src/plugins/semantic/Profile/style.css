@@ -17,8 +17,13 @@ div#main-grid-profile {
     box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.4) !important;
 }
 
-#main-list-profile {
+div#main-div-profile {
     margin-top: 15px;
     padding: 5px !important;
     box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.4) !important;
+}
+
+#main-list-profile {
+    margin-top: 15px;
+    padding: 10px !important;
 }
