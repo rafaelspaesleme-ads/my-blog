@@ -8,7 +8,7 @@ export default function HeaderImage(props) {
     <Header as='h2'>
         <Image circular src={props.avatarFollower} /> 
         <span id="header-title">
-          <a href="/home">
+          <a href={props.redirectButtonHeader}>
             {props.nameFollower}
             <i id="main-subtitle-blog" >{props.subNameFollower}</i>
           </a>

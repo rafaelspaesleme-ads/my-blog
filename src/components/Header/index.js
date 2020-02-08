@@ -21,6 +21,7 @@ function verifyUserAuth() {
             <div id="main-center">
                 <strong id="main-title-blog">
                     <HeaderImage 
+                        redirectButtonHeader={'/home'}
                         avatarFollower={'https://avatars2.githubusercontent.com/u/11760799?s=460&v=4'} 
                         nameFollower={'RPL Project'} 
                         subNameFollower={', o blog sobre tecnologia!'}
@@ -51,6 +52,7 @@ function verifyUserAuth() {
             <>
             <div id="main-left">
                 <HeaderImage 
+                    redirectButtonHeader={`profile/follower/${followerId}`}
                     avatarFollower={'https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/git/git.png'} 
                     nameFollower={'Teste'} 
                 />
@@ -58,6 +60,7 @@ function verifyUserAuth() {
             <div id="main-center">
                 <strong id="main-title-blog">
                     <HeaderImage 
+                        redirectButtonHeader={'/home'}
                         avatarFollower={'https://avatars2.githubusercontent.com/u/11760799?s=460&v=4'} 
                         nameFollower={'RPL Project'} 
                         subNameFollower={', o blog sobre tecnologia!'}
