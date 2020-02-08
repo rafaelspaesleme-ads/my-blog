@@ -49,7 +49,7 @@ class FormFollower extends Component {
                     <Form.Input type="file" fluid label='Avatar' placeholder='Escolha uma imagem para ser seu avatar' />
                     </Form.Group>
                     <Form.TextArea label='Sobre mim' placeholder='Fale um pouco sobre você' />
-                    <Form.Button>Submit</Form.Button>
+                    <Form.Button>Cadastrar e seguir</Form.Button>
                 </Form>
             </div>
         )
