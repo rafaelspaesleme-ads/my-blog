@@ -8,6 +8,8 @@ import Portfolios from './../lists/Portfolios';
 import Posts from './../lists/Posts';
 import Repositories from './../lists/Repositories';
 
+import './style.css';
+
 export default class Home extends Component {
 
     state = {
@@ -21,7 +23,7 @@ export default class Home extends Component {
 
   render() {
     return (
-        <div>
+        <div id="main-home">
             <TabPointing 
               contentPost={<Posts />} 
               contentArticles={<Articles />} 

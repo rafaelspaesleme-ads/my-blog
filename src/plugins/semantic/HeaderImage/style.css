@@ -2,3 +2,8 @@ span#header-title {
     padding-left: 15px;
     padding-right: 15px;
 }
+
+
+i#main-subtitle-blog {
+    background-color: transparent;
+}

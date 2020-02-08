@@ -14,10 +14,11 @@ header {
     display: flex;
     padding: 10px;
     width: 100%;
-    height: 50px;
+    height: 60px;
     justify-content: center;
     align-items: center;
-    border-bottom: 1px solid #000000;
+    border-bottom: 1px solid #303030;
+    box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.4);
 }
 
 body {
@@ -37,7 +38,10 @@ footer {
     text-align: center;
     justify-content: center;
     align-items: center;
-    border-top: 1px solid #000000;
+    border-top: 1px solid #303030;
+    -moz-box-shadow: -5px -5px 5px rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: -5px -5px 5px rgba(0, 0, 0, 0.4);
+    box-shadow: -5px -5px 5px rgba(0, 0, 0, 0.4);
 }
 
 .ui.segment {
@@ -230,4 +234,16 @@ h2.ui.header {
 
 .ui.header>.img {
     size: 5px;
+}
+
+a {
+    color: #ffffff;
+}
+
+a:hover {
+    color: #777777;
+}
+
+.ui.form .field>label {
+    color: #ffffff;
 }

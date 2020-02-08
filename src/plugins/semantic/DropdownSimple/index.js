@@ -1,23 +1,16 @@
 import React from 'react';
-import { Dropdown, DropdownItem } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
-
+import { Dropdown } from 'semantic-ui-react';
+import { NavLink } from 'react-router-dom';
 
 export default function DropdownSimple(props) {
 
   return (
-    <Dropdown text=" " icon="settings"  >
+    <Dropdown text=" " icon="th"  >
       <Dropdown.Menu>
-        <DropdownItem icon="sign-in" text='Logar' tag={ Link } to={props.loginDrop} >
-
-        </DropdownItem>
-        <DropdownItem icon="add user" text='Siga-nos' tag={ Link } to={props.userDrop} >
-          
-        </DropdownItem>
-        <Dropdown.Divider />
-        <DropdownItem icon="share square" text='Compartilhar' tag={ Link } to={props.sharedDrop} >
-          
-        </DropdownItem>
+            <Dropdown.Item icon={props.iconItemOne} text={props.nameItemOne} href={props.linkItemOne} />
+            <Dropdown.Item icon={props.iconItemTwo} text={props.nameItemTwo} href={props.linkItemTwo} target={props.typeTargetOne} />
+            <Dropdown.Divider />
+            <Dropdown.Item icon={props.iconItemThree} text={props.nameItemThree} href={props.linkItemThree} target={props.typeTargetTwo} />
       </Dropdown.Menu>
     </Dropdown>
   );

@@ -14,3 +14,10 @@ div#main-center {
 div#main-right {
     text-align: right;
 }
+strong#main-title-blog {
+    background-color: transparent;
+}
+
+strong i#main-subtitle-blog {
+    background-color: transparent;
+}
