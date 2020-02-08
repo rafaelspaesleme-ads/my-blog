@@ -13,7 +13,7 @@ const content = "Conheça o blog https://rplproject.com e fique por dentro de tu
 const sharedWhatsapp = `https://api.whatsapp.com/send?text=${content}`;
 
 function verifyUserAuth() {
-    if (userAuth === null){
+    if (userAuth !== null){
         return (
             <>
             <div id="main-left">
