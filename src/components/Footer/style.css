@@ -1,16 +1,72 @@
-div {
-    background: transparent;
-    width: 100%;
+.main-footer {
+    bottom: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
 }
 
-div#footer-left {
-    text-align: left;
+.footer-left {
+    width: 33.25% !important;
+    text-align: left !important;
 }
 
-div#footer-center {
-    text-align: center;
+.footer-center {
+    width: 33.25% !important;
+    text-align: center !important;
 }
 
-div#footer-right {
-    text-align: right;
+.footer-right {
+    width: 33.25% !important;
+    text-align: right !important;
+}
+
+/*---------------------------------------------------------*/
+/*---------------------------------------------------------*/
+
+.footer-cola-rowa {
+    width: 100% !important;
+    height: 33.25% !important;
+}
+
+.footer-cola-rowb {
+    width: 100% !important;
+    height: 33.25% !important;
+}
+
+.footer-cola-rowc {
+    width: 100% !important;
+    height: 33.25% !important;
+}
+
+/*----------------------------------------------------------*/
+
+.footer-colb-rowa {
+    width: 100% !important;
+    height: 33.25% !important;
+}
+
+.footer-colb-rowb {
+    width: 100% !important;
+    height: 33.25% !important;
+}
+
+.footer-colb-rowc {
+    width: 100% !important;
+    height: 33.25% !important;
+}
+
+/*----------------------------------------------------------*/
+
+.footer-colc-rowa {
+    width: 100% !important;
+    height: 33.25% !important;
+}
+
+.footer-colc-rowb {
+    width: 100% !important;
+    height: 33.25% !important;
+}
+
+.footer-colc-rowc {
+    width: 100% !important;
+    height: 33.25% !important;
 }
