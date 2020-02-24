@@ -1,0 +1,112 @@
+.main-grid {
+    align-items: center !important;
+    width: 99% !important;
+    border: 1px solid #303030;
+    padding: 20px !important;
+    margin: 5px !important;
+}
+
+.main-grid-row {
+    padding: 15px !important;
+}
+
+.main-input {
+    left: 24% !important;
+    padding: 5px !important;
+}
+
+.main-input-formation>input {
+    max-width: 23% !important;
+}
+
+.main-input-formation>button {
+    max-width: 9% !important;
+}
+
+.main-input-formation>button>i {
+    color: rgb(71, 71, 71) !important;
+}
+
+.main-segment-group-formation {
+    padding: 5px !important;
+    margin: 10px !important;
+    width: 45.5% !important;
+    border-bottom: 1px solid #303030 !important;
+}
+
+.main-segment-native {
+    background-color: #929292 !important;
+    border-bottom: 1px solid #585858 !important;
+    color: #303030 !important;
+}
+
+.main-grid-col-nivel {
+    width: 27% !important;
+    margin-bottom: 5px !important;
+}
+
+.main-button-segment {
+    width: 10% !important;
+    float: right !important;
+    background-color: transparent !important;
+
+}
+
+.main-button-segment>i {
+    padding-left: 7px !important;
+    color: #303030 !important;
+}
+
+.main-segment-group-cient {
+    margin: 10px !important;
+    width: 44% !important;
+    border: 1px solid #303030 !important;
+    border-bottom: 3px solid #303030 !important;
+    border-right: 3px solid #303030 !important;
+    padding: 10px !important;
+    background-color: #929292 !important;
+
+}
+
+.main-table-row-header {
+    background-color: #929292 !important;
+}
+
+.main-table-body-row {
+    background-color: #929292 !important;
+}
+
+.ui.labeled.input>.label  {
+    max-width: 160px !important;
+}
+
+.main-input>input {
+    max-width: 40% !important;
+}
+
+.main-input>i {
+    color: black !important;
+    left: 50% !important;
+}
+
+.main-subgrid-row {
+    left: 27.2% !important;
+}
+
+.main-grid-row-segment {
+    margin-right: 50px !important;
+}
+
+.main-input-nivel>.label {
+    background-color: transparent !important;
+    color: #dfdfdf !important;
+}
+
+hr#main-hr {
+    width: 100% !important;
+    border-color: #929292 !important;
+}
+
+.main-button-save {
+    width: 100% !important;
+}
