@@ -5,8 +5,11 @@ import { prevPage } from './../utils/prevPage';
 import { nextPage } from './../utils/nextPage';
 import LayoutList from './../utils/LayoutList';
 
-export default class Articles extends Component {
+var date = null;
+const direction = ['DESC','ASC']
 
+export default class Articles extends Component {
+  
   state = {
     articles: [],
     articlesInfo: {},
@@ -14,11 +17,12 @@ export default class Articles extends Component {
   }
 
   componentDidMount() {
+    date = new Date();
     this.loadArticles();
   }
 
   loadArticles = async (page = 1) => {
-    const response = await api.get(`/artigo/lista/situacao/${true}?page=${page}`);
+    const response = await api.get(`/artigo/buscar/ativo/${true}?page=${page}?size=${20}?orderBy=${date.toString()}?direction=${direction[0]}`);
 
     const { ...articlesInfo } = response.data;
 

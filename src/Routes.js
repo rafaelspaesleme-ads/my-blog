@@ -13,6 +13,8 @@ import Repositories from './pages/inserts/Repositories'
 
 import Contents from './tests/Contents'
 
+const hashPage = '12b907cab9ac73e57872cc7d6159a762'
+
 const Routes = () => (   
     <BrowserRouter>
         <Switch>
@@ -20,11 +22,11 @@ const Routes = () => (
             <Route exact path="/home" component={Home} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/new-follower" component={Followers} />
-            <Route exact path="/create/post" component={Posts} />
-            <Route exact path="/create/article" component={Article} />
-            <Route exact path="/create/contact" component={Contacts} />
-            <Route exact path='/create/portfolio' component={Portfolios} />
-            <Route exact path='/create/repo' component={Repositories} />
+            <Route exact path={`/create/post`} component={Posts} />
+            <Route exact path={`/create/article`} component={Article} />
+            <Route exact path={`/create/contact`} component={Contacts} />
+            <Route exact path={`/create/portfolio`} component={Portfolios} />
+            <Route exact path={`/create/repo`} component={Repositories} />
             <Route exact path={`/profile/follower/${1}`} component={ProfileFollower} />
             <Route exact path="/teste/content" component={Contents} />
         </Switch>

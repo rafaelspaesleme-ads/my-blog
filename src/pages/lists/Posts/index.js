@@ -5,33 +5,61 @@ import { prevPage } from './../utils/prevPage';
 import { nextPage } from './../utils/nextPage';
 import LayoutList from './../utils/LayoutList';
 
+const direction = ['DESC','ASC']
+
+var countPosts = 0;
 
 export default class Posts extends Component {
 
   state = {
     posts: [],
     postsInfo: {},
-    page: 1
+    page: 0
   }
 
   componentDidMount() {
     this.loadPosts();
   }
 
-  loadPosts = async (page = 1) => {
-    const response = await api.get(`/post/lista/situacao/${true}?page=${page}`);
-    const { ...postsInfo } = response.data;
+  loadPosts = async (page = 0) => {
+    const response = await api.get(`/postagem/buscar/ativo/true?page=${page}&size=5&orderBy=datePost&direction=${direction[1]}`);
+    console.log(response)
+    countPosts = response.data.totalElements;
+    const { content, ...postsInfo } = response.data;
 
-    this.setState({posts: postsInfo, page});
+    this.setState({posts: content, postsInfo, page});
+  }
+
+  prevPage = () => {
+    const { page, postsInfo } = this.state;
+
+    if(page === 0) return;
+
+    const pageNumber = page - 1;
+
+    this.loadPosts(pageNumber)
+  }
+
+  nextPage = () => {
+    const { page, postsInfo } = this.state;
+
+    if (page === postsInfo.pages) return;
+
+    const pageNumber = page + 1;
+
+    this.loadPosts(pageNumber);
   }
 
   render() {
     const { posts, page, postsInfo } = this.state;
 
+    const countCurrentPosts = this.state.posts.length;
+
     return (
       <LayoutList 
         titleLayoutList={'MINHAS POSTAGENS'} 
-        subTitleLayoutList={`Atualmente tenho ${this.state.posts.length} postagens publicadas.`} 
+        subTitleLayoutList={`Atualmente tenho ${countPosts} postagens publicadas.`} 
+        descriptionLayoutList={`Pagina: ${page+1} / posts na pagina: ${countCurrentPosts} de ${countPosts}`}
         contentLayoutList={
           posts.map(post => (
             <CardLinkCard key={post.id}
@@ -42,10 +70,10 @@ export default class Posts extends Component {
             />
           ))
         } 
-        logicalPrevLayoutList={page === 1} 
-        clickPrevLayoutList={prevPage} 
+        logicalPrevLayoutList={page === 0} 
+        clickPrevLayoutList={this.prevPage} 
         logicalNextLayoutList={page === postsInfo.pages} 
-        clickNextLayoutList={nextPage}
+        clickNextLayoutList={this.nextPage}
       />        
     );
   }
