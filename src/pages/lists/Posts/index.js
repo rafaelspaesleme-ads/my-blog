@@ -22,11 +22,9 @@ export default class Posts extends Component {
   }
 
   loadPosts = async (page = 0) => {
-    const response = await api.get(`/postagem/buscar/ativo/true?page=${page}&size=5&orderBy=datePost&direction=${direction[1]}`);
-    console.log(response)
+    const response = await api.get(`/postagem/buscar/ativo/true?page=${page}&size=5&orderBy=datePost&direction=${direction[0]}`);
     countPosts = response.data.totalElements;
     const { content, ...postsInfo } = response.data;
-
     this.setState({posts: content, postsInfo, page});
   }
 
