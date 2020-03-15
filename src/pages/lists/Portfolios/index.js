@@ -6,6 +6,8 @@ import { nextPage } from './../utils/nextPage';
 import LayoutList from './../utils/LayoutList';
 import { Icon } from 'semantic-ui-react';
 
+import './style.css';
+
 const direction = ['DESC','ASC']
 var countPortfolios = 0;
 
@@ -23,7 +25,7 @@ export default class Portfolios extends Component {
 
   loadPortfolios = async (page = 0) => {
     const response = await api.get(`/portfolio/buscar/ativo/true?page=${page}&size=5&orderBy=datePost&direction=${direction[0]}`);
-    console.log(response);
+    
     countPortfolios = response.data.totalElements;
     const { content, ...portfoliosInfo } = response.data;
     this.setState({portfolios: content, portfoliosInfo, page })
@@ -49,19 +51,6 @@ export default class Portfolios extends Component {
     this.loadPortfolios(pageNumber);
   }
 
-  veriffyPercColor(event) {
-    switch (event) {
-      case event < 50:
-        return 'red';
-      case event = 50:
-        return 'yellow';
-      case event > 50 :
-        return 'teal';
-      default:
-        return 'grey';
-    }
-  }
-
   render() {
 
     const { portfolios, page, portfoliosInfo } = this.state;
@@ -74,13 +63,19 @@ export default class Portfolios extends Component {
 
           portfolios.map(portfolio => (
             <div>
-              <ProgressBar key={portfolio.id}
-                percentageProgress={portfolio.percentage} 
-                titleProgress={portfolio.title}
-                colorProgress={this.veriffyPercColor(portfolio.percentage)}
-              />
+              {portfolio.learnings.map(learning => (
+              <div>
+                <ProgressBar key={learning.id}
+                  percentageProgress={learning.level} 
+                  titleProgress={learning.title}
+                  colorProgress={learning.level <= 49 ? 'red' : learning.level >= 51 ? 'teal' : 'yellow'}
+                />
+              </div>
+              ))}
               <hr/>
-              <a href={portfolio.urlPortfolio}><Icon name='eye' />Visualizar</a>
+              <br/>
+              <a id="main-click-view-portfolio" target="_blank" href={portfolio.socialMedia.urlLinkedIn}><Icon name='eye' />Visualizar portfólio detalhado</a>
+              <br/>
             </div>
           ))
         } 

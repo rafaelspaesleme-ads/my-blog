@@ -1,0 +1,7 @@
+a#main-click-view-portfolio:hover {
+    cursor: pointer;
+}
+
+a#main-click-view-portfolio {
+    margin: 15px !important;
+}
