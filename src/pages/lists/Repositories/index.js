@@ -5,26 +5,49 @@ import { prevPage } from './../utils/prevPage';
 import { nextPage } from './../utils/nextPage';
 import LayoutList from './../utils/LayoutList';
 
-// import { Container } from './styles';
+const direction = ['DESC','ASC']
+var countRepositories = 0;
+
 
 export default class Repositories extends Component {
 
   state = {
     repositories: [],
     repositoriesInfo: {},
-    page: 1
+    page: 0
   }
 
   componentDidMount() {
-
+      this.loadRepository();
   }
 
-  loadRepository = async (page = 1) => {
-    const response = await api.get(`/repository/lista/situacao/${true}?page=${page}`);
+  loadRepository = async (page = 0) => {
+    const response = await api.get(`/repositorio/buscar/ativo/true?page=${page}&size=5&orderBy=datePost&direction=${direction[0]}`);
 
-    const { ...repositoriesInfo } = response.data;
+    countRepositories = response.data.totalElements;
+    const { content, ...repositoriesInfo } = response.data;
 
-    this.setState({ repositories: repositoriesInfo, page });
+    this.setState({ repositories: content, repositoriesInfo, page });
+  }
+
+  prevPage = () => {
+    const { page, repositoriesInfo } = this.state;
+
+    if(page === 0) return;
+
+    const pageNumber = page - 1;
+
+    this.loadRepository(pageNumber)
+  }
+
+  nextPage = () => {
+    const { page, repositoriesInfo } = this.state;
+
+    if (page === repositoriesInfo.pages) return;
+
+    const pageNumber = page + 1;
+
+    this.loadRepository(pageNumber);
   }
 
   render() {
@@ -37,17 +60,25 @@ export default class Repositories extends Component {
         contentLayoutList={
           repositories.map(repository => (
             <ListDivided key={repository.id}
-              linkListDivided={repository.linkProject} 
-              iconListDivided={repository.iconProject} 
-              titleListDivided={repository.titleProject} 
-              descriptionListDivided={repository.descriptionProject}
+              linkListDivided={repository.urlRepository} 
+              iconListDivided={
+                repository.domainGit.includes('github') 
+                ? 'github' 
+                : repository.domainGit.includes('bitbucket') 
+                ? 'bitbucket' 
+                : repository.domainGit.includes('gitlab') 
+                ? 'gitlab'
+                : 'git square'
+              } 
+              titleListDivided={repository.title} 
+              descriptionListDivided={repository.description}
             />
           ))
         } 
-        logicalPrevLayoutList={page === 1} 
-        clickPrevLayoutList={prevPage} 
+        logicalPrevLayoutList={page === 0} 
+        clickPrevLayoutList={this.prevPage} 
         logicalNextLayoutList={page === repositoriesInfo.pages} 
-        clickNextLayoutList={nextPage}
+        clickNextLayoutList={this.nextPage}
       />
     );
   }
