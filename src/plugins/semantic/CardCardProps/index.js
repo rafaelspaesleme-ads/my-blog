@@ -17,11 +17,11 @@ export default function CardCardProps(props) {
 
   return (
     <Card className="item-card"
-    image={props.imageCardProps}
-    header={props.titleCardProps}
-    meta={props.subTitleCardProps}
-    description={props.descriptionCardProps}
-    extra={extra}
-  />
+      image={props.imageCardProps}
+      header={props.titleCardProps}
+      meta={props.subTitleCardProps}
+      description={props.descriptionCardProps}
+      extra={extra}
+    />
   );
 }
