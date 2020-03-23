@@ -4,7 +4,8 @@ import HeaderImage from './../../plugins/semantic/HeaderImage';
 
 import './style.css';
 
-const userAuth = localStorage.getItem('auth-token');
+//const userAuth = localStorage.getItem('auth-token');
+const userAuth = null;
 
 const followerId = 1;
 
