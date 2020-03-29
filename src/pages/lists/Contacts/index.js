@@ -60,10 +60,10 @@ export default class Contacts extends Component {
         contacts.map(contact => (
           <ListDivided key={contact.id}
             linkListDivided={
-              contact.typeContact.includes('Whatsapp')
-              ? `https://api.whatsapp.com/send?phone=${contact.address}` 
+              contact.typeContact.includes('Whats')
+              ? `https://api.whatsapp.com/send?phone=${contact.address.replace('+', '')}`.replace("=24","=5524") 
               : contact.typeContact.includes('Tel') || contact.typeContact.includes('Cel')
-              ? `tel:${contact.address}` 
+              ? `tel:${contact.address.replace("+", "")}`.replace("=24","=5524")  
               : contact.typeContact.includes('mail') 
               ? `mailto:${contact.address}` 
               : contact.typeContact.includes('Instagram') 

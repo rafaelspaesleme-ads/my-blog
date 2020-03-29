@@ -7,25 +7,10 @@ import './style.css'
 
 
 export default class Dashboard extends Component {
-
-    state = {
-        token: ''
-    }
-
-    componentDidCatch() {
-        this.loadingLocalStorage();        
-    }
-
-
-    loadingLocalStorage() {
-        const { token } = this.state;
-        token = localStorage.getItem('auth-token');
-    }
-
     render() {
         return (
             <>
-                {this.state.token !== null 
+                {localStorage.getItem('auth-token') !== null 
                     ? <AccessDashboardSuccefull /> 
                     : <accessDashboardFail />}
             </>

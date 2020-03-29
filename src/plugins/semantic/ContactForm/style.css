@@ -8,3 +8,11 @@
     border: 1px solid #303030;
     padding: 15px;
 }
+
+.form-field-article {
+    margin-top: 15px !important;
+}
+
+.button-save {
+    width: 300px !important;
+}

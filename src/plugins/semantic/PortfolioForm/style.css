@@ -110,3 +110,40 @@ hr#main-hr {
 .main-button-save {
     width: 100% !important;
 }
+
+.main-label-formation {
+    width: 341px !important;
+    font-size: 16px !important;
+    text-align: center !important;
+}
+
+.main-select-formation {
+    width: 341px !important;
+}
+
+.radio-portfolio {
+    display: flex !important;
+    background-color: #dfdfdf;
+    padding-top: 4px !important;
+    padding-bottom: 4px !important;
+}
+
+.radio-portfolio label {
+    background-color: #dfdfdf;
+    color: #303030 !important;
+}
+
+.div-radio-formation {
+    width: 341px !important;
+}
+
+.form-formation {
+    position: relative !important;
+    background-color: transparent !important;
+}
+
+.color-h5 {
+    text-align: center !important;
+    padding: 4px !important;
+    color: #dfdfdf !important;
+}
