@@ -1,0 +1,31 @@
+{
+    "sqltools.connections": [
+        {
+            "database": "fitmob",
+            "dialect": "PostgreSQL",
+            "name": "PostgresDocker",
+            "password": "banco@1004",
+            "port": 5433,
+            "server": "192.168.0.108",
+            "username": "postgres"
+        },
+        {
+            "database": "db_blog_rafael",
+            "dialect": "PostgreSQL",
+            "name": "blog",
+            "password": "banco@1004",
+            "port": 5432,
+            "server": "192.168.0.102",
+            "username": "postgres"
+        },
+        {
+            "database": "db_myblog",
+            "dialect": "PostgreSQL",
+            "name": "myblog",
+            "password": "banco@1004",
+            "port": 5437,
+            "server": "localhost",
+            "username": "postgres"
+        }
+    ]
+}
