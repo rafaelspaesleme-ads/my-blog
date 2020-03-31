@@ -1,11 +1,53 @@
 .main-form-field {
+    position: initial !important;
     left: 24% !important;
     border: 1px solid #303030 !important;
     margin: 10px !important;
     padding: 20px !important;
-    width: 50% !important;
+    width: 100% !important;
 }
 
-#form-button-control-public {
-    width: 393px !important;
+.form-input-control-first-name {
+    margin-top: 5px !important;
+    margin-bottom: 5px !important;
+}
+
+.form-textarea-control-opinion {
+    margin-top: 5px !important;
+    margin-bottom: 5px !important;
+}
+
+.form-button-control-public {
+    margin-top: 5px !important;
+    margin-bottom: 5px !important;
+    width: 100% !important;
+}
+
+.div-radio-repo div {
+    padding: 10px !important;
+    background-color: #dfdfdf !important;
+    border-radius: 5px !important;
+}
+
+.div-radio-repo strong { 
+    color: #303030 !important;
+    background-color: transparent !important;
+}
+
+.div-radio-repo {
+    margin-top: 5px !important;
+    margin-bottom: 5px !important;
+    width: 100% !important;
+    background-color: #dfdfdf !important;
+}
+
+.radio-repo {
+    padding-top: 10px !important;
+    padding-left: 10px !important;
+    padding-bottom: 10px !important;
+}
+
+.radio-repo label {
+    background-color: #dfdfdf !important;
+    color: #303030 !important;
 }
