@@ -35,7 +35,7 @@ const Routes = () => (
             <Route exact path="/home" component={Home} />
             <Route exact path="/xkj-login" component={Login} />
             <Route exact path={`/artigo/artigo-${titleArticle}`} component={ShowArticle} />
-            <Route exact path={`/post-${titlePost}`} component={ShowPost} />
+            <Route exact path={`/post/post-${titlePost}`} component={ShowPost} />
             <Route exact path="/teste/content" component={Contents} />
             <PrivateRoute path="/kwlc-dashboard" component={Dashboard} />
             <Route path="*" component={() => <h1>Pagina não encontrada!</h1>} />

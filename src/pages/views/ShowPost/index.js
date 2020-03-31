@@ -5,7 +5,7 @@ import api from './../../../services/api';
 import './style.css'
 
 export default function ShowPost() {
-    const idArticle = localStorage.getItem('id-article');
+    const idPost = localStorage.getItem('id-post');
     const [title, setTitle] = useState('');
     const [subTitle, setSubTitle] = useState('');
     const [description, setDescription] = useState('');
@@ -13,7 +13,7 @@ export default function ShowPost() {
     const [datePost, setDatePost] = useState('');
 
     useEffect(() => {
-        api.get(`/postagem/buscar/${idArticle}`)
+        api.get(`/postagem/buscar/codigo/${idPost}`)
         .then(response => {
             console.log(response);
             setTitle(response.data.title);
@@ -25,12 +25,14 @@ export default function ShowPost() {
         .catch(err => {
             alert(`Erro ao retornar dados!\nInfo: ${err}`);
         })
-    }, [idArticle]);
+    }, [idPost]);
     
     const sections = [
         { key: 'Home', content: 'Home', link: true },
-        { key: 'Article', content: 'Artigo', link: true },
-      ]
+        { key: 'Post', content: 'Artigo', link: true },
+    ]
+
+    console.log(datePost);
 
     return (
         <div className="div-general" >
@@ -47,7 +49,7 @@ export default function ShowPost() {
                     <h1>{title}</h1>
                 </Container>
                 <Container textAlign='right'>
-                    <strong>Data da postagem: {datePost}</strong>
+                    <strong>Data da postagem: {datePost.replace('T', ' - ')}</strong>
                 </Container>
                 <Container 
                     className='container-description'

@@ -72,9 +72,7 @@ export default class Portfolios extends Component {
                 />
               </div>
               ))}
-              <hr/>
               <br/>
-              <a id="main-click-view-portfolio" target="_blank" href={portfolio.socialMedia.urlLinkedIn}><Icon name='eye' />Visualizar portfólio detalhado</a>
               <br/>
             </div>
           ))

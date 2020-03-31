@@ -14,7 +14,7 @@ export default function ShowArticle() {
     const [datePost, setDatePost] = useState('');
 
     useEffect(() => {
-        api.get(`/artigo/buscar/${idArticle}`)
+        api.get(`/artigo/buscar/codigo/${idArticle}`)
         .then(response => {
             console.log(response);
             setUrlImage(response.data.urlImage);
@@ -59,7 +59,7 @@ export default function ShowArticle() {
                     <h1>{title}</h1>
                 </Container>
                 <Container textAlign='right'>
-                    <strong>Data da postagem: {datePost}</strong>
+                    <strong>Data da postagem: {datePost.replace('T', ' - ')}</strong>
                 </Container>
                 <Container 
                     className='container-description'
