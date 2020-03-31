@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import { Dropdown, Input, Table, Segment, Button, Grid, Form, Label, Icon, Radio } from 'semantic-ui-react'
+import React, { useState } from 'react';
+import { Input, Segment, Button, Grid, Form, Label, Icon, Radio } from 'semantic-ui-react'
 
 import api from '../../../services/apiPrivate'
 
 import './style.css'
+
+//=============================================================================
 
 const newListFormation = [];
 const newListLearnings = [];
@@ -59,39 +61,28 @@ export default function PortfolioForm() {
 
     async function handleSetPortfolio(e) {
         e.preventDefault();
-        const dataFormation = {
-            title: '',
-            institution: '',
-            dateInitial: '',
-            dateFinal: '',
-            active: true,
-            typeCourses: ''
-        }
+        const dataFormation = []
 
-        const dataLearnings = {
-            title: '',
-            level: 0,
-            active: true
-        }
+        const dataLearnings = []
 
-        listFormation.forEach(formation => {
-            dataFormation.title = formation.data.titleFormation;
-            dataFormation.institution = formation.data.institutionFormation;
-            dataFormation.dateInitial = formation.data.dateInitialFormation;
-            dataFormation.dateFinal = formation.data.dateFinalFormation;
-            dataFormation.active = formation.data.activeFormation;
-            setFormationsOrCourses(dataFormation);
+        listFormation.forEach((formation) => {
+            dataFormation.push({
+                title: formation.data.titleFormation,
+                institution: formation.data.institutionFormation,
+                dateInitial: formation.data.dateInitialFormation,
+                dateFinal: formation.data.dateFinalFormation,
+                typeCourses: formation.data.typeCoursesFormation,
+                active: formation.data.activeFormation
+            })
         })
 
-        listLearnings.forEach(learning => {
-            dataLearnings.title = learning.data.titleLearning;
-            dataLearnings.level = learning.data.levelLearning;
-            dataLearnings.active = learning.data.activeLearning;
-            setLearnings(dataLearnings);
+        listLearnings.map((learning) => {
+            dataLearnings.push({
+                title: learning.data.titleLearning,
+                level: learning.data.levelLearning,
+                active: learning.data.activeLearning                
+            })
         })
-
-        
-        setLearnings(listLearnings);
 
         const data = {
             portfolioDTO: {
@@ -102,8 +93,8 @@ export default function PortfolioForm() {
                 whatsApp,
                 mail,
                 phone,
-                formationsOrCourses,
-                learnings,
+                formationsOrCourses: dataFormation,
+                learnings: dataLearnings,
                 active
             },
             socialMediaDTO: {
@@ -138,7 +129,6 @@ export default function PortfolioForm() {
         } else {
             await api.post("/portfolio/salvar", data)
             .then((response) => {
-                console.log(response.data)
                 setSuccess("Portfólio cadastrado com sucesso!")
                 alert("Salvo com sucesso!")
             })
@@ -150,6 +140,7 @@ export default function PortfolioForm() {
     }
 
     function handleAddFormation(e){
+        e.preventDefault();
         const data = {
             titleFormation,
             institutionFormation,
@@ -165,6 +156,7 @@ export default function PortfolioForm() {
     };
 
     function handleAddLearnings(e){
+        e.preventDefault();
         const data = {
             titleLearning,
             levelLearning,
@@ -294,61 +286,63 @@ export default function PortfolioForm() {
                 <Grid.Row className="main-grid-row main-subgrid-row">
                     <Grid.Row >
                         <Grid.Column className="main-grid-col">
-                                <Label className="main-label-formation">Formações e cursos</Label>
-                                <Input 
-                                    className="main-input-formation"
-                                    label='Titulo' 
-                                    placeholder='Insira suas formações' 
-                                    value={titleFormation}
-                                    onChange={e => setTitleFormation( e.target.value )}         
+                            <Label className="main-label-formation">Formações e cursos</Label>
+                            <Input 
+                                className="main-input-formation"
+                                label='Titulo' 
+                                placeholder='Insira suas formações' 
+                                value={titleFormation}
+                                onChange={e => setTitleFormation( e.target.value )}         
+                            />
+                            <Input 
+                                className="main-input-formation"
+                                label='Instituição' 
+                                placeholder='Insira suas formações' 
+                                value={institutionFormation}
+                                onChange={e => setInstitutionFormation( e.target.value )}              
+                            />
+                            <Input 
+                                type="date"
+                                className="main-input-formation"
+                                label='Inicio' 
+                                placeholder='Insira suas formações' 
+                                value={dateInitialFormation}
+                                onChange={e => setDateInitialFormation( e.target.value )}            
+                            />
+                            <Input 
+                                type="date"
+                                className="main-input-formation"
+                                label='Fim' 
+                                placeholder='Insira suas formações' 
+                                value={dateFinalFormation}
+                                onChange={e => setDateFinalFormation( e.target.value )}             
+                            />
+                            
+                            <div className='div-radio-formation' >
+                                <Radio
+                                    className='radio-portfolio'
+                                    label='Curso'
+                                    name='radioGroup'
+                                    value='COURSE'
+                                    checked={typeCoursesFormation === 'COURSE'}
+                                    onChange={e => setTypeCoursesFormation('COURSE')}
                                 />
-                                <Input 
-                                    className="main-input-formation"
-                                    label='Instituição' 
-                                    placeholder='Insira suas formações' 
-                                    value={institutionFormation}
-                                    onChange={e => setInstitutionFormation( e.target.value )}              
+                                <Radio
+                                    className='radio-portfolio'
+                                    label='Academico'
+                                    name='radioGroup'
+                                    value='ACADEMY'
+                                    checked={typeCoursesFormation === 'ACADEMY'}
+                                    onChange={e => setTypeCoursesFormation('ACADEMY')}
                                 />
-                                <Input 
-                                    type="date"
-                                    className="main-input-formation"
-                                    label='Inicio' 
-                                    placeholder='Insira suas formações' 
-                                    value={dateInitialFormation}
-                                    onChange={e => setDateInitialFormation( e.target.value )}            
-                                />
-                                <Input 
-                                    type="date"
-                                    className="main-input-formation"
-                                    label='Fim' 
-                                    placeholder='Insira suas formações' 
-                                    value={dateFinalFormation}
-                                    onChange={e => setDateFinalFormation( e.target.value )}             
-                                />
-                                <div className='div-radio-formation' >
-                                    <Radio
-                                        className='radio-portfolio'
-                                        label='Curso'
-                                        name='radioGroup'
-                                        value='COURSE'
-                                        checked={typeCoursesFormation === 'COURSE'}
-                                        onChange={e => setTypeCoursesFormation('COURSE')}
-                                    />
-                                    <Radio
-                                        className='radio-portfolio'
-                                        label='Academico'
-                                        name='radioGroup'
-                                        value='ACADEMY'
-                                        checked={typeCoursesFormation === 'ACADEMY'}
-                                        onChange={e => setTypeCoursesFormation('ACADEMY')}
-                                    />
-                                </div>
-                                <Button 
-                                    className="main-label-formation" 
-                                    onClick={handleAddFormation}
-                                >
-                                        <Icon name="student" color="black"/> Inserir
-                                </Button>
+                            </div>
+                            
+                            <Button 
+                                className="main-label-formation" 
+                                onClick={handleAddFormation}
+                            >
+                                    <Icon name="student" color="black"/> Inserir
+                            </Button>
                         </Grid.Column>
                     </Grid.Row>
                     <Grid.Row className="main-grid-row-segment">
@@ -393,7 +387,7 @@ export default function PortfolioForm() {
                     <Grid.Row className="main-grid-row-segment">
                     <Segment.Group className="main-segment-group-formation">
                         {listLearnings.map(itemLearning => (
-                            <Segment key={itemLearning.data.titleFormation} clearing className="main-segment-native">
+                            <Segment key={itemLearning.data.titleLearning} clearing className="main-segment-native">
                             <h5 className="color-h5" >{itemLearning.data.titleLearning} - {itemLearning.data.levelLearning} (%)</h5>
                             </Segment>
                         ))}
