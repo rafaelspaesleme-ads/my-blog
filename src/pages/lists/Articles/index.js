@@ -62,7 +62,9 @@ export default class Articles extends Component {
           contentLayoutList={
             articles.map(article => (
               <CardCardProps className="content-article" key={article.id} 
-                linkCardProps={`/artigo/${article.id}`} 
+                localIdArticle={article.id}
+                localTitleArticle={article.title}
+                linkCardProps={`/artigo/artigo-${article.title}`} 
                 imageCardProps={article.urlImage} 
                 titleCardProps={article.title} 
                 subTitleCardProps={article.subTitle} 

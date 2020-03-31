@@ -61,7 +61,9 @@ export default class Posts extends Component {
         contentLayoutList={
           posts.map(post => (
             <CardLinkCard key={post.id}
-                linkCard={`/post/${post.id}`} 
+            localIdPost={post.id}
+            localTitlePost={post.title}
+            linkCardProps={`/post/post-${post.title}`} 
                 titleCard={post.title} 
                 subTitleCard={post.subTitle} 
                 descriptionCard={post.description}
