@@ -1,47 +1,74 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
 import {
   Button,
-  Checkbox,
   Form,
   Input,
-  Radio,
-  Select,
   TextArea,
 } from 'semantic-ui-react'
-
+import api from '../../../services/apiPrivate'
 import './style.css'
 
-const options = [
-  { key: 'm', text: 'Male', value: 'male' },
-  { key: 'f', text: 'Female', value: 'female' },
-  { key: 'o', text: 'Other', value: 'other' },
-]
+export default function PostForm() {
+  const [title, setTitle]= useState('');
+  const [subTitle, setSubTitle]= useState('');
+  const [description, setDescription]= useState('');
+  const [text, setText]= useState('');
+  const [active, setactive]= useState(true);
 
-class PostForm extends Component {
-  state = {}
+  async function handleSetPost(e) {
+    e.preventDefault();
+    
+    const data ={
+      title,
+      subTitle,
+      description,
+      text,
+      active
+    };
 
-  handleChange = (e, { value }) => this.setState({ value })
+    try {
+      const response = await api.post('/postagem/salvar', data);
+      console.log(response);
+      alert(`Postagem realizada com sucesso!\nStatus: ${response.status}`)
+    } catch(err){
+      alert(`Erro ao cadastrar post.\nInfo: ${err}`)
+    }
+  }
 
-  render(props) {
-    const { value } = this.state
     return (
-      <Form className="main-post-create" >
-            <Form.Field
+      <Form className="main-post-create" onSubmit={handleSetPost} >
+            <Input className="main-input" 
                 control={Input}
                 label='Titulo do post'
                 placeholder='Escreva o titulo do post'
+                value={title}
+                onChange={e => setTitle(e.target.value)}
             />
-            <Form.Field
-                control={TextArea}
+            <Input className="main-input" 
+                control={Input}
+                label='Subtitulo do post'
+                placeholder='Escreva o subtitulo do post'
+                value={subTitle}
+                onChange={e => setSubTitle(e.target.value)}
+            />
+            <TextArea className="main-text-area" 
+                label='Descrição do post'
+                placeholder='Descreve a intenção deste post...'
+                value={description}
+                onChange={e => setDescription(e.target.value)}
+            />
+            <TextArea className="main-text-area" 
                 label='Conteudo do post'
                 placeholder='O que tem a dizer neste novo post? ...'
+                value={text}
+                onChange={e => setText(e.target.value)}
             />
-            <Form.Field control={Button}>
+            <Button 
+              className="main-button-save"
+              type="submit"
+            >
                 Postar
-            </Form.Field>
+            </Button>
       </Form>
     )
-  }
 }
-
-export default PostForm
