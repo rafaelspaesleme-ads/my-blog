@@ -5,6 +5,12 @@ import { Link } from 'react-router-dom';
 import './style.css';
 
 export default function CardCardProps(props) {
+    const idArticle = props.localIdArticle;
+    const titleArticle = props.localTitleArticle;
+
+      localStorage.setItem('id-article', idArticle);
+      localStorage.setItem('title-article', titleArticle);
+
     const extra = (
         <div className="item-box-link" >
           <Link className="item-link" to={props.linkCardProps}>
@@ -17,11 +23,11 @@ export default function CardCardProps(props) {
 
   return (
     <Card className="item-card"
-    image={props.imageCardProps}
-    header={props.titleCardProps}
-    meta={props.subTitleCardProps}
-    description={props.descriptionCardProps}
-    extra={extra}
-  />
+      image={props.imageCardProps}
+      header={props.titleCardProps}
+      meta={props.subTitleCardProps}
+      description={props.descriptionCardProps}
+      extra={extra}
+    />
   );
 }

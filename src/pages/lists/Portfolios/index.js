@@ -4,39 +4,51 @@ import api from './../../../services/api';
 import { prevPage } from './../utils/prevPage';
 import { nextPage } from './../utils/nextPage';
 import LayoutList from './../utils/LayoutList';
-import { Icon } from 'semantic-ui-react'
+import { Icon } from 'semantic-ui-react';
+
+import './style.css';
+
+const direction = ['DESC','ASC']
+var countPortfolios = 0;
 
 export default class Portfolios extends Component {
 
   state = {
     portfolios: [],
     portfoliosInfo: {},
-    page: 1
+    page: 0
   }
 
   componentDidMount() {
     this.loadPortfolios();
   }
 
-  loadPortfolios = async (page = 1) => {
-    const response = await api.get(`/portfolio/lista/situacao/${true}?page=${page}`);
-
-    const { ...portfoliosInfo } = response.data;
-
-    this.setState({portfolios: portfoliosInfo, page })
+  loadPortfolios = async (page = 0) => {
+    const response = await api.get(`/portfolio/buscar/ativo/true?page=${page}&size=5&orderBy=datePost&direction=${direction[0]}`);
+    console.log(response)
+    countPortfolios = response.data.totalElements;
+    const { content, ...portfoliosInfo } = response.data;
+    this.setState({portfolios: content, portfoliosInfo, page })
   }
 
-  veriffyPercColor(event) {
-    switch (event) {
-      case event < 50:
-        return 'red';
-      case event = 50:
-        return 'yellow';
-      case event > 50 :
-        return 'teal';
-      default:
-        return 'grey';
-    }
+  prevPage = () => {
+    const { page, portfoliosInfo } = this.state;
+
+    if(page === 0) return;
+
+    const pageNumber = page - 1;
+
+    this.loadPortfolios(pageNumber)
+  }
+
+  nextPage = () => {
+    const { page, portfoliosInfo } = this.state;
+
+    if (page === portfoliosInfo.pages) return;
+
+    const pageNumber = page + 1;
+
+    this.loadPortfolios(pageNumber);
   }
 
   render() {
@@ -46,25 +58,29 @@ export default class Portfolios extends Component {
     return (
       <LayoutList 
         titleLayoutList={'MEU PORTFÓLIO'} 
-        subTitleLayoutList={`Atualmente tenho conhecimento em ${this.state.portfolios.length} tecnologias diferentes.`} 
+        subTitleLayoutList={`Fique por dentro de todas as minhas qualificações, nas informações abaixo.`} 
         contentLayoutList={
+
           portfolios.map(portfolio => (
             <div>
-              <ProgressBar key={portfolio.id}
-                percentageProgress={portfolio.percentage} 
-                titleProgress={portfolio.title}
-                colorProgress={this.veriffyPercColor(portfolio.percentage)}
-              />
-              <hr/>
-              <a href={portfolio.urlPortfolio}><Icon name='eye' />Visualizar</a>
+              {portfolio.learnings.map(learning => (
+              <div>
+                <ProgressBar key={learning.id}
+                  percentageProgress={learning.level} 
+                  titleProgress={learning.title}
+                  colorProgress={learning.level <= 49 ? 'red' : learning.level >= 51 ? 'teal' : 'yellow'}
+                />
+              </div>
+              ))}
+              <br/>
+              <br/>
             </div>
-            
           ))
         } 
-        logicalPrevLayoutList={page === 1} 
-        clickPrevLayoutList={prevPage} 
+        logicalPrevLayoutList={page === 0} 
+        clickPrevLayoutList={this.prevPage} 
         logicalNextLayoutList={page === portfoliosInfo.pages} 
-        clickNextLayoutList={nextPage}
+        clickNextLayoutList={this.nextPage}
       />
     );
   }

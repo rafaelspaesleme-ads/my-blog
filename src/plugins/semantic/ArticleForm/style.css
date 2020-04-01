@@ -1,0 +1,18 @@
+.main-article-create {
+    text-align: center !important;
+    align-items: center !important;
+    margin-top: 20px;
+    left: 18%;
+    vertical-align: middle !important;
+    align-items: center !important;
+    border: 1px solid #303030;
+    padding: 15px;
+}
+
+.form-field-article {
+    margin-top: 15px !important;
+}
+
+.button-save {
+    width: 300px !important;
+}

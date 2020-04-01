@@ -1,13 +1,12 @@
 import React from 'react';
 import { List } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
 import './style.css'
 
 export default function ListDivided(props) {
   return (
   <List divided relaxed className="item-list">
   <List.Item className="item-list-item">
-    <Link to={props.linkListDivided} className="item-link">
+    <a href={props.linkListDivided} target="_blank" className="item-link">
         <List.Content className="item-list-content">
           <List.Content className="box-icon">
             <List.Icon name={props.iconListDivided} size='large' verticalAlign='middle' className="item-list-icon" />
@@ -17,7 +16,7 @@ export default function ListDivided(props) {
             <List.Description as='a' className="item-list-description">{props.descriptionListDivided}</List.Description>
           </List.Content>  
         </List.Content>
-    </Link>
+    </a>
   </List.Item>
   </List>
   );

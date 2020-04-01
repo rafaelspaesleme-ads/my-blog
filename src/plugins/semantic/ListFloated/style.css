@@ -1,0 +1,14 @@
+.main-list-float {
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px !important;
+    margin: 10px !important;
+}
+
+.button-list-float {
+    width: 120px !important;
+}
+
+.list-content-float {
+    float: right !important;
+}

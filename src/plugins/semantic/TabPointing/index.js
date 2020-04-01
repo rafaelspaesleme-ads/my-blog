@@ -46,14 +46,14 @@ export default function TabPointing(props) {
         </Tab.Pane>
       ),
     },
-    {
+    /**{
       menuItem: 'Fórum',
       render: () => (
         <Tab.Pane className="item-tab-pane" attached={false}>
           {props.contentForum}
         </Tab.Pane>
       ),
-    },
+    },*/
   ]
 
   return (

@@ -4,8 +4,9 @@ import './style.css'
 
 
 export default function ProgressBar(props) {
+  const colored = props.colorProgress;
 
   return (
-    <Progress className="item-progress" label={props.titleProgress} percent={props.percentageProgress} color={props.colorProgress} progress />
+    <Progress className="item-progress" label={props.titleProgress} percent={props.percentageProgress} color={colored} progress />
   );
 }
