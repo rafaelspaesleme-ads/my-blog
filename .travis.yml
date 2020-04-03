@@ -1,5 +1,15 @@
- 
 language: node_js
-node_js: node
-after_success:
-  - npm run coverage
+cache: npm
+notifications:
+  email: false
+node_js:
+  - 10.16.3
+  - node
+install:
+  - npm install
+  - yarn install
+script:
+  - yarn start
+branches:
+  only:
+    - master
