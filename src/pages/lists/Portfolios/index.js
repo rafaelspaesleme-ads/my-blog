@@ -25,7 +25,6 @@ export default class Portfolios extends Component {
 
   loadPortfolios = async (page = 0) => {
     const response = await api.get(`/portfolio/buscar/ativo/true?page=${page}&size=5&orderBy=datePost&direction=${direction[0]}`);
-    console.log(response)
     countPortfolios = response.data.totalElements;
     const { content, ...portfoliosInfo } = response.data;
     this.setState({portfolios: content, portfoliosInfo, page })

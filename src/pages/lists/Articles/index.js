@@ -23,7 +23,6 @@ export default class Articles extends Component {
 
   loadArticles = async (page = 0) => {
     const response = await api.get(`/artigo/buscar/ativo/true?page=${page}&size=5&orderBy=datePost&direction=${direction[0]}`);
-    console.log(response);
     countArticles = response.data.totalElements;
     const { content, ...articlesInfo } = response.data;
     this.setState({articles: content, articlesInfo, page });

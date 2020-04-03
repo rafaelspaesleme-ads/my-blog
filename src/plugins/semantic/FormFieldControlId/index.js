@@ -46,11 +46,9 @@ export default function FormFieldControlId() {
       programmingLanguage
     }
 
-    console.log(data)
 
     try {
       const response = await api.post('/repositorio/salvar', data);
-      console.log(response);
       alert(`Repositório cadastrado com sucesso!\nStatus: ${response.status}`)
     } catch(err){
       alert(`Erro ao cadastrar repositório.\nInfo: ${err}`)

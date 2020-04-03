@@ -63,11 +63,9 @@ class ArticleForm extends Component {
     } else {
         await api.post("/artigo/salvar", articleDTO)
           .then((response) => {
-            console.log(response.data)
             this.setState({success: "Artigo postado com sucesso!"})
           })
           .catch((error) => {
-            console.log(error)
             this.setState({fail: "Erro ao realizar postagem deste artigo!"})
           })
           this.cleanAttributes();

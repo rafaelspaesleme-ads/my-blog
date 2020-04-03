@@ -15,7 +15,6 @@ export default function ShowPost() {
     useEffect(() => {
         api.get(`/postagem/buscar/codigo/${idPost}`)
         .then(response => {
-            console.log(response);
             setTitle(response.data.title);
             setSubTitle(response.data.subTitle);
             setDescription(response.data.description);
@@ -32,7 +31,6 @@ export default function ShowPost() {
         { key: 'Post', content: 'Artigo', link: true },
     ]
 
-    console.log(datePost);
 
     return (
         <div className="div-general" >
