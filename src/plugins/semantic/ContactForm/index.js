@@ -62,11 +62,9 @@ class ContactForm extends Component {
     } else {
         await api.post("/contato/salvar", contactDTO)
           .then((response) => {
-            console.log(response.data)
             this.setState({success: "Contato cadastrado com sucesso!"})
           })
           .catch((error) => {
-            console.log(error)
             this.setState({fail: "Erro ao realizar cadastro deste contato!"})
           })
           this.cleanAttributes();

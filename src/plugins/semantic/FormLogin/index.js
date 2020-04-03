@@ -21,12 +21,10 @@ class FormLogin extends Component {
         } else {
           try {
             const response = await api.post("/login", { usuario, senha });
-            console.log(response)
             login(response.data);
             this.setState({success: "Login realizado com sucesso!"})
             this.props.history.push("/kwlc-dashboard");
           } catch (err) {
-              console.log(err)
             this.setState({
               error:
                 "Houve um problema com o login, verifique suas credenciais!"

@@ -133,7 +133,6 @@ export default function PortfolioForm() {
                 alert("Salvo com sucesso!")
             })
             .catch((error) => {
-                console.log(error)
                 setFail("Erro ao realizar cadastro deste portfólio!")
             })
         }
