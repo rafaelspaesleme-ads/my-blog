@@ -28,7 +28,6 @@ export default function PostForm() {
 
     try {
       const response = await api.post('/postagem/salvar', data);
-      console.log(response);
       alert(`Postagem realizada com sucesso!\nStatus: ${response.status}`)
     } catch(err){
       alert(`Erro ao cadastrar post.\nInfo: ${err}`)

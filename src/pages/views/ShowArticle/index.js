@@ -16,7 +16,6 @@ export default function ShowArticle() {
     useEffect(() => {
         api.get(`/artigo/buscar/codigo/${idArticle}`)
         .then(response => {
-            console.log(response);
             setUrlImage(response.data.urlImage);
             setTitle(response.data.title);
             setSubTitle(response.data.subTitle);
