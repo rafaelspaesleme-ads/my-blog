@@ -3,7 +3,7 @@ import axios from 'axios';
 
 import { getToken } from "./auth";
 
-const path = 'http://localhost:8081';
+const path = 'https://rpl-blog-backend.herokuapp.com';
 
 const api = axios.create({baseURL: path});
 
