@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Breadcrumb, Container, Divider } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import api from './../../../services/api';
 import './style.css'
 
 export default function ShowPost() {
-    const idPost = localStorage.getItem('id-post');
+    const { idPost, titlePost } = useParams();
     const [title, setTitle] = useState('');
     const [subTitle, setSubTitle] = useState('');
     const [description, setDescription] = useState('');
@@ -28,7 +28,7 @@ export default function ShowPost() {
     
     const sections = [
         { key: 'Home', content: 'Home', link: true },
-        { key: 'Post', content: 'Artigo', link: true },
+        { key: 'Post', content: 'Post', link: true },
     ]
 
 

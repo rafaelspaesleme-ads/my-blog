@@ -12,9 +12,6 @@ import { isAuthenticated } from "./services/auth";
 
 const hashPage = '12b907cab9ac73e57872cc7d6159a762'
 
-const titleArticle = localStorage.getItem('title-article');
-const titlePost = localStorage.getItem('title-post');
-
 const PrivateRoute = ({ component: Component, ...rest }) => (
     <Route
       {...rest}
@@ -34,8 +31,8 @@ const Routes = () => (
             <Route exact path="/" component={Home} />
             <Route exact path="/home" component={Home} />
             <Route exact path="/xkj-login" component={Login} />
-            <Route exact path={`/artigo/artigo-${titleArticle}`} component={ShowArticle} />
-            <Route exact path={`/post/post-${titlePost}`} component={ShowPost} />
+            <Route exact path="/artigo/:idArticle/:titleArticle" component={ShowArticle} />
+            <Route exact path="/post/:idPost/:titlePost" component={ShowPost} />
             <Route exact path="/teste/content" component={Contents} />
             <PrivateRoute path="/kwlc-dashboard" component={Dashboard} />
             <Route path="*" component={() => <h1>Pagina não encontrada!</h1>} />

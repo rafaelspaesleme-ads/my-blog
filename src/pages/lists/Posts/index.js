@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import CardLinkCard from '../../../plugins/semantic/CardLinkCard';
 import api from './../../../services/api';
 import { prevPage } from './../utils/prevPage';
@@ -60,14 +61,13 @@ export default class Posts extends Component {
         descriptionLayoutList={`Pagina: ${page+1} / posts na pagina: ${countCurrentPosts} de ${countPosts}`}
         contentLayoutList={
           posts.map(post => (
-            <CardLinkCard key={post.id}
-            localIdPost={post.id}
-            localTitlePost={post.title}
-            linkCardProps={`/post/post-${post.title}`} 
-                titleCard={post.title} 
-                subTitleCard={post.subTitle} 
-                descriptionCard={post.description}
+	   <Link key={post.id} to={`/post/${post.id}/${post.title}`}>
+            <CardLinkCard
+            titleCard={post.title} 
+            subTitleCard={post.subTitle} 
+            descriptionCard={post.description}
             />
+	   </Link>
           ))
         } 
         logicalPrevLayoutList={page === 0} 

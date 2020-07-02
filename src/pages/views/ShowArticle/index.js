@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Breadcrumb, Container, Divider, Image } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import api from './../../../services/api';
 import './style.css'
 
 export default function ShowArticle() {
-    const idArticle = localStorage.getItem('id-article');
+    const { idArticle, titleArticle } = useParams();
     const [urlImage, setUrlImage] = useState('');
     const [title, setTitle] = useState('');
     const [subTitle, setSubTitle] = useState('');
@@ -66,10 +66,12 @@ export default function ShowArticle() {
                 >
                 <b>{subTitle}</b>
                 <Divider />
-                    <h4 
+                   <center>
+		    <h4 
                         className='paragraph-text'
                         dangerouslySetInnerHTML={{__html: description}} 
                     />
+		   </center>
                     <p 
                         className='paragraph-text'
                         dangerouslySetInnerHTML={{__html: text}} 

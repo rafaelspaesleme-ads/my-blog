@@ -1,0 +1,60 @@
+--- 
+networks: 
+  app-network: 
+    driver: bridge
+services: 
+  certbot: 
+    command: "certonly --webroot --webroot-path=/var/www/html --email rafaelspaesleme.ads@gmail.com --agree-tos --no-eff-email --force-renewal -d myblog.rplproject.com  -d www.myblog.rplproject.com"
+    container_name: certbot
+    depends_on: 
+      - webserver
+    image: certbot/certbot
+    volumes: 
+      - "certbot-etc:/etc/letsencrypt"
+      - "certbot-var:/var/lib/letsencrypt"
+      - "web-root:/var/www/html"
+  nodejs: 
+    build: 
+      context: "."
+      dockerfile: Dockerfile
+    container_name: myblog
+    image: nodejs
+    networks: 
+      - app-network
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
+  webserver: 
+    container_name: webserver
+    depends_on: 
+      - nodejs
+    image: "nginx:mainline-alpine"
+    networks: 
+      - app-network
+    ports: 
+      - "80:80"
+      - "443:443"
+    restart: unless-stopped
+    volumes: 
+      - "web-root:/var/www/html"
+      - "./nginx-conf:/etc/nginx/conf.d"
+      - "certbot-etc:/etc/letsencrypt"
+      - "certbot-var:/var/lib/letsencrypt"
+      - dhparam:/etc/ssl/certs
+version: "3"
+volumes: 
+  certbot-etc: ~
+  certbot-var: ~
+  web-root: 
+    driver: local
+    driver_opts: 
+      device: /home/avantecloud/my-blog/views/
+      o: bind
+      type: none
+  dhparam:
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/avantecloud/my-blog/dhparam/
+      o: bind
+
