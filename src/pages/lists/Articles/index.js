@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import CardCardProps from '../../../plugins/semantic/CardCardProps';
+import { Link } from 'react-router-dom';
 import api from './../../../services/api';
 import { prevPage } from './../utils/prevPage';
 import { nextPage } from './../utils/nextPage';
@@ -10,7 +11,7 @@ const direction = ['DESC','ASC']
 var countArticles = 0;
 
 export default class Articles extends Component {
-  
+
   state = {
     articles: [],
     articlesInfo: {},
@@ -60,15 +61,16 @@ export default class Articles extends Component {
           descriptionLayoutList={`Pagina: ${page+1} / artigos na pagina: ${countCurrentArticles} de ${countArticles}`}
           contentLayoutList={
             articles.map(article => (
-              <CardCardProps className="content-article" key={article.id} 
+	     <Link key={article.id} to={`/artigo/${article.id}/${article.title}`}>
+              <CardCardProps className="content-article" 
                 localIdArticle={article.id}
                 localTitleArticle={article.title}
-                linkCardProps={`/artigo/artigo-${article.title}`} 
                 imageCardProps={article.urlImage} 
                 titleCardProps={article.title} 
                 subTitleCardProps={article.subTitle} 
                 descriptionCardProps={article.description}
               />
+             </Link>
             ))
           } 
           logicalPrevLayoutList={page === 0} 
